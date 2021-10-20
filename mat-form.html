@@ -1,0 +1,50 @@
+<div style="text-align: center;">
+<h1>Registration</h1>
+<div>
+    <form [formGroup]="myform" (ngSubmit)="register()" >
+        <mat-form-field>
+           <mat-label>Name : </mat-label> 
+           <input type="text" matInput formControlName="name">
+           <mat-error *ngIf="myform.controls.name.hasError('required')">
+               Name is required
+           </mat-error>
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+            <mat-label>Email :</mat-label>
+            <input matInput formControlName="email">
+            <mat-error *ngIf="myform.controls.email.hasError('required')">
+                Email is required
+            </mat-error>
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+            <mat-label>Mobile : </mat-label> 
+            <input matInput formControlName="mobile">
+            <mat-error *ngIf="myform.controls.mobile.hasError('required')">
+                Mobile is required
+            </mat-error>
+         </mat-form-field>
+         <br>
+         <mat-form-field>
+             <mat-label>Course :</mat-label>
+             <input matInput formControlName="course">
+             <mat-error *ngIf="myform.controls.course.hasError('required')">
+                 Course is required
+             </mat-error>
+         </mat-form-field>
+         <br>
+         <button mat-raised-button type="primary">Register</button>&nbsp;
+         <button mat-raised-button type="reset" (click)="reset()" >Reset</button>
+
+    </form>
+</div>
+</div>
+<div>
+    <div style="text-align: center; color: green;" *ngIf="registerStatus">
+        {{msg}}
+    </div>
+    <div style="text-align: center; color: red;" *ngIf="!registerStatus">
+        {{msg}}
+    </div>
+</div>
