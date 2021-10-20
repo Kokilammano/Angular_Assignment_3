@@ -1,0 +1,76 @@
+<div style="text-align: center;">
+    <h1>STUDENT REGISTRATION FORM</h1><hr>
+    <form [formGroup]="myform" (ngSubmit)="onRegisterClick()" >
+        <div>
+            <label>Name :</label>
+            <input type="text" formControlName="name"/>
+            <span style="color: red;" 
+                *ngIf="myform.controls.name.touched &&
+                myform.controls.name.invalid &&
+                myform.controls.name.errors?.required">
+                Name is required...
+            </span>
+            <span style="color: red;" 
+                *ngIf="myform.controls.name.touched &&
+                myform.controls.name.invalid &&
+                myform.controls.name.errors?.minlength">
+                Name must be atleast 3 characters...
+            </span>
+            <span style="color: red;" 
+                *ngIf="myform.controls.name.touched &&
+                myform.controls.name.invalid &&
+                myform.controls.name.errors?.maxlength">
+                Name must be less than 20 characters...
+            </span>
+        </div><br>
+        <div>
+            <label>Email :</label>
+            <input type="email" formControlName="email"/>
+            <span style="color: red;" 
+                *ngIf="myform.controls.email.touched &&
+                myform.controls.email.invalid &&
+                myform.controls.email.errors?.required">
+                Email is required...
+            </span>
+            <span style="color: red;" 
+                *ngIf="myform.controls.email.touched &&
+                myform.controls.email.invalid &&
+                myform.controls.email.errors?.email">
+                Email is invalid...
+            </span>
+
+        </div><br>
+        <div>
+            <label>Mobile :</label>
+            <input type="number" formControlName="mobile"/>
+            <span style="color: red;" 
+                *ngIf="myform.controls.mobile.touched &&
+                myform.controls.mobile.invalid &&
+                myform.controls.mobile.errors?.required">
+                Mobile number is required...
+            </span>
+        </div><br>
+        <div>
+            <label>Course :</label>
+            <input type="text" formControlName="course"/>
+            <span style="color: red;" 
+                *ngIf="myform.controls.course.touched &&
+                myform.controls.course.invalid &&
+                myform.controls.course.errors?.required">
+                Course is required...
+            </span>
+        </div><br>
+        <div>
+            <input type="submit" value="Register">&nbsp;
+            <input type="reset" value="Reset" (click)="reset()" >
+        </div>
+    </form>
+</div>
+<div>
+    <div style="color: green; text-align: center;" *ngIf="registerStatus">
+        {{msg}}
+    </div>
+    <div style="color: red; text-align: center;" *ngIf="!registerStatus">
+        {{msg}}
+    </div>
+</div>
